@@ -21,6 +21,7 @@ from django.conf import settings
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
+from .views import AngularAppView
 
 
 schema_view = get_schema_view(
@@ -37,7 +38,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Angular app routes - catch all routes under django_reddit/
-    re_path(r'^django_reddit/.*$', TemplateView.as_view(template_name='index.html'), name='angular_app'),
+    re_path(r'^django_reddit/.*$', AngularAppView.as_view(), name='angular_app'),
     path('accounts/', include('allauth.urls')),
     re_path(r'^rest-auth/', include('dj_rest_auth.urls')),
     re_path(r'^rest-auth/registration/', include('dj_rest_auth.registration.urls')),
