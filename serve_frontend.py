@@ -5,7 +5,7 @@ import sys
 import mimetypes
 import urllib.parse
 
-PORT = 12001
+PORT = 8080
 DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
                          "static/frontend/reddit-app/dist")
 

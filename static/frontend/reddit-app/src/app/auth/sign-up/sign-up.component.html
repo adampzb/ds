@@ -3,16 +3,9 @@
     <h2 class="text-white" align="center">Sign up for Django-Reddit </h2>
 
     <form class="width-100" [formGroup]="registerForm" class="auth-form" autocomplete="off">
-      <div class="input-column" style="display: flex; gap: 16px">
-        <div class="width-100 margin-bottom-4">
-          <label for="firstname">First name</label>
-          <input matInput id="firstname" placeholder="John" formControlName="first_name" type="text" class="form-input">
-        </div>
-
-        <div class="width-100 margin-bottom-4">
-          <label for="lastname">Last name</label>
-          <input matInput id="lastname" placeholder="Doe" formControlName="last_name" type="text" class="form-input">
-        </div>
+      <div class="width-100 margin-bottom-4">
+        <label for="username">Username</label>
+        <input matInput id="username" placeholder="johndoe" formControlName="username" type="text" class="form-input">
       </div>
 
       <div class="width-100 margin-bottom-4">

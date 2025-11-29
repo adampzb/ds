@@ -24,10 +24,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
-      first_name: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      last_name: new FormControl('', {
+      username: new FormControl('', {
         validators: [Validators.required]
       }),
       email: new FormControl('', {
@@ -59,8 +56,7 @@ export class SignUpComponent implements OnInit {
     }
 
     const formData = {
-      first_name: this.registerForm.value.first_name,
-      last_name: this.registerForm.value.last_name,
+      username: this.registerForm.value.username,
       email: this.registerForm.value.email,
       password1: this.registerForm.value.password1,
       password2: this.registerForm.value.password2

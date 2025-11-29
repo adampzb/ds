@@ -153,3 +153,6 @@ package-lock.json
 # OS files
 .DS_Store
 Thumbs.db
+
+# Temporary files
+cookies.txt
