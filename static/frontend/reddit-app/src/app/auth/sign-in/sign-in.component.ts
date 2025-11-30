@@ -39,6 +39,9 @@ export class SignInComponent implements OnInit {
     console.log('Sign-in form submitted');
     console.log('Form valid:', this.loginForm.valid);
     console.log('Form values:', this.loginForm.value);
+    console.log('Form errors:', this.loginForm.errors);
+    console.log('Email control errors:', this.loginForm.get('email')?.errors);
+    console.log('Password control errors:', this.loginForm.get('password')?.errors);
     
     if (!this.loginForm.valid) {
       console.log('Form is invalid, not submitting');
@@ -78,6 +81,7 @@ export class SignInComponent implements OnInit {
       },
       (err) => {
         console.error('Login error:', err);
+        console.error('Error details:', JSON.stringify(err, null, 2));
         this.isLoading = false;
         if (err.error) {
           if (err.error.non_field_errors) {

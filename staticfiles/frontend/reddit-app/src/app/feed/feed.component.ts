@@ -6,6 +6,7 @@ import { User } from '../core/models/user.model';
 import { Post } from '../core/models/post.model';
 
 @Component({
+  standalone: false,
   selector: 'app-feed',
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss']

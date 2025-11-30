@@ -307,7 +307,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_PREFLIGHT_MAX_AGE = 86400
 
 # CORS Configuration
-cors_origins = get_env_variable('CORS_ALLOWED_ORIGINS', 'https://work-1-woavzjjseoqpclwv.prod-runtime.all-hands.dev,https://work-2-woavzjjseoqpclwv.prod-runtime.all-hands.dev,http://localhost:4200,http://127.0.0.1:4200')
+cors_origins = get_env_variable('CORS_ALLOWED_ORIGINS', 'https://work-1-zwuvwfqbmhtodnal.prod-runtime.all-hands.dev,https://work-2-zwuvwfqbmhtodnal.prod-runtime.all-hands.dev,http://localhost:4200,http://127.0.0.1:4200')
 CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]
 
 

@@ -5,6 +5,7 @@ import { Comment } from '@reddit/core/models/comment.model';
 
 
 @Component({
+  standalone: false,
   selector: 'app-comment-footer',
   templateUrl: './comment-footer.component.html',
   styleUrls: ['./comment-footer.component.scss']

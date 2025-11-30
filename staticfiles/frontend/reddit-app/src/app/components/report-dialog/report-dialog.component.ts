@@ -4,6 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { ReportService } from '@reddit/core/services/report/report.service';
 
 @Component({
+  standalone: false,
   selector: 'app-report-dialog',
   templateUrl: './report-dialog.component.html',
   styleUrls: ['./report-dialog.component.scss']
@@ -17,7 +18,7 @@ export class ReportDialogComponent implements OnInit {
   typeControl: FormControl = new FormControl();
   reporter: number;
   reported_user: string;
-  selectedType: number;
+  selectedType: any;
   readOnlyUrl: boolean;
   types = [];
 

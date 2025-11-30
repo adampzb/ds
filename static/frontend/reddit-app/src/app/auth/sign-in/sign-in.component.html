@@ -19,7 +19,7 @@
         <div class="divider-right"></div>
       </div>
 
-      <form class="width-100" [formGroup]="loginForm" class="auth-form" autocomplete="off">
+      <form class="width-100" [formGroup]="loginForm" class="auth-form" autocomplete="off" (ngSubmit)="onSubmit()">
         <div class="width-100 margin-bottom-4">
           <label for="email">Email</label>
           <input matInput id="email" placeholder="jane@email.com" formControlName="email" type="email" class="form-input" required>
@@ -30,13 +30,14 @@
         <div class="width-100 margin-bottom-4" style="position: relative">
           <label for="password">Password</label>
           <input matInput id="password" placeholder="wonderfullemon dankworld" formControlName="password" [type]="hidePassword ? 'password' : 'text'" class="form-input" required>
-          <button mat-icon-button matSuffix class="toggle-visibility-btn" (click)="toggleVisibility()" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+          <button type="button" mat-icon-button matSuffix class="toggle-visibility-btn" (click)="toggleVisibility()" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
             <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
         </div>
 
-        <button mat-button color="primary" (click)="onSubmit()" class="margin-top-4 width-100 custom-button block-button submit-button">
-          Submit
+        <button type="submit" mat-button color="primary" class="margin-top-4 width-100 custom-button block-button submit-button" [disabled]="isLoading">
+          <span *ngIf="!isLoading">Submit</span>
+          <span *ngIf="isLoading">Logging in...</span>
         </button>
 
 

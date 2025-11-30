@@ -6,6 +6,7 @@ import { CommentService } from '@reddit/core/services/comment/comment.service';
 
 
 @Component({
+  standalone: false,
   selector: 'app-comment-edit',
   templateUrl: './comment-edit.component.html',
   styleUrls: ['./comment-edit.component.scss']

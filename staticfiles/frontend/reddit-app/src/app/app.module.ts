@@ -19,11 +19,12 @@ import { SearchComponent } from './search/search.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { HttpXsrfInterceptor } from './auth.header.interceptor';
 
-import { TimeSinceModule } from '@thisissoon/angular-timesince';
+// TimeSinceModule is not compatible with Angular 19 - will need to replace with custom pipe
 // import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { QuillModule } from 'ngx-quill';
+// FlexLayout is deprecated in Angular 19, using CSS Grid/Flexbox instead
 import { SafeContentPipe } from '@reddit/core/pipes/safe-content/safe-content.pipe';
+import { TimeSincePipe } from '@reddit/core/pipes/time-since/time-since.pipe';
 
 import { PostComponent } from './post/post/post.component';
 import { CreatePostComponent } from './post/create-post/create-post.component';
@@ -102,17 +103,13 @@ import { GroupSearchComponent } from './group/group-search/group-search.componen
 
     GroupSearchComponent,
 
-    SafeContentPipe
+    SafeContentPipe,
+    TimeSincePipe
   ],
-  entryComponents: [
-    ConfirmationDialogComponent,
-    AddInterestDialogComponent,
-  ],
+
   imports: [
     BrowserModule,
     FormsModule,
-    TimeSinceModule,
-    FlexLayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
@@ -121,11 +118,10 @@ import { GroupSearchComponent } from './group/group-search/group-search.componen
     }),
     BrowserAnimationsModule,
     CommonModule,
-    TimeSinceModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     // FroalaViewModule.forRoot(),
     // FroalaEditorModule.forRoot(),
-    CKEditorModule,
+    QuillModule.forRoot(),
     AppRoutingModule,
   ],
   providers: [  CookieService,

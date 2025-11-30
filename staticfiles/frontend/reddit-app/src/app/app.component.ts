@@ -15,7 +15,8 @@ import { CreateGroupComponent } from './group/create-group/create-group.componen
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: false
 })
 export class AppComponent implements OnInit, AfterContentChecked {
   title = 'reddit';

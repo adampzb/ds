@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
+  standalone: false,
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
@@ -23,6 +24,7 @@ export class SignUpComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Updated to use username instead of first_name/last_name
     this.registerForm = new FormGroup({
       username: new FormControl('', {
         validators: [Validators.required]
@@ -33,7 +35,7 @@ export class SignUpComponent implements OnInit {
       password1: new FormControl('', { validators: [Validators.required] }),
       password2: new FormControl('', { validators: [Validators.required] })
     });
-    console.log(this.registerForm);
+    console.log('Updated registration form:', this.registerForm);
   }
 
   get formControl() {
@@ -48,6 +50,10 @@ export class SignUpComponent implements OnInit {
     console.log('Sign-up form submitted');
     console.log('Form valid:', this.registerForm.valid);
     console.log('Form values:', this.registerForm.value);
+    console.log('Form errors:', this.getFormValidationErrors());
+    
+    // Mark all fields as touched to show validation errors
+    this.markFormGroupTouched(this.registerForm);
     
     if (!this.registerForm.valid) {
       console.log('Form is invalid, not submitting');
@@ -91,5 +97,25 @@ export class SignUpComponent implements OnInit {
         }
       }
     );
+  }
+
+  // Helper method to mark all form fields as touched
+  private markFormGroupTouched(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  }
+
+  // Helper method to get form validation errors for debugging
+  private getFormValidationErrors() {
+    let formErrors: any = {};
+    Object.keys(this.registerForm.controls).forEach(key => {
+      const controlErrors = this.registerForm.get(key)?.errors;
+      if (controlErrors) {
+        formErrors[key] = controlErrors;
+      }
+    });
+    return formErrors;
   }
 }
