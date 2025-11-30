@@ -59,10 +59,18 @@ A **modern full-stack Reddit clone** built with **Django REST Framework** backen
 - SQLite (default) or PostgreSQL
 
 ### Frontend
-- Node.js 20+ (recommended)
-- Angular 21.0.1 (latest stable)
-- Angular CLI 21.0.1
-- TypeScript 5.9.3
+- **Node.js**: 22.12.0+ (LTS recommended) - **CRITICAL: Angular 21 requires Node.js 22.12.0 or higher**
+- **Angular**: 21.0.1 (latest stable)
+- **Angular CLI**: 21.0.1
+- **TypeScript**: 5.9.3
+- **npm**: 10.0.0+
+
+#### ⚠️ Version Compatibility Matrix
+| Angular Version | Node.js Version | TypeScript Version | Status |
+|----------------|-----------------|-------------------|---------|
+| 21.0.x | ^22.12.0 \|\| ^24.0.0 | >=5.9.0 <6.0.0 | ✅ Current |
+| 20.x | ^20.19.0 \|\| ^22.12.0 \|\| ^24.0.0 | >=5.8.0 <6.0.0 | ✅ Supported |
+| 19.x | ^18.19.1 \|\| ^20.11.1 \|\| ^22.0.0 | >=5.5.0 <5.9.0 | ⚠️ Legacy |
 
 ## ⚙️ Quick Start
 
@@ -89,16 +97,44 @@ python manage.py runserver 0.0.0.0:8000
 ```
 
 ### 2. Setup Frontend
+
+#### ⚠️ IMPORTANT: Node.js Version Check
+```bash
+# Check Node.js version (MUST be 22.12.0 or higher for Angular 21)
+node --version
+# If version is lower than 22.12.0, install Node.js 22 LTS:
+# curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+# sudo apt-get install -y nodejs
+
+# Verify npm version (should be 10.0.0+)
+npm --version
+```
+
+#### Frontend Installation
 ```bash
 # Navigate to frontend directory
 cd static/frontend/reddit-app
 
-# Install Angular dependencies
+# Clean install (recommended for version compatibility)
+rm -rf node_modules package-lock.json
 npm install
 
-# Start Angular development server
+# Build for production
+npm run build
+
+# OR start Angular development server
 ng serve --host 0.0.0.0 --port 4200
 ```
+
+#### 🔧 Troubleshooting Node.js/Angular Issues
+If you encounter engine compatibility warnings:
+
+1. **Check versions**: Ensure Node.js >= 22.12.0 and npm >= 10.0.0
+2. **Clean install**: Delete `node_modules` and `package-lock.json`, then `npm install`
+3. **Use .nvmrc**: The project includes `.nvmrc` file specifying Node.js 22.21.0
+4. **Engine requirements**: Check `package.json` engines field for exact requirements
+
+📖 **For detailed compatibility information, see [NODEJS_ANGULAR_COMPATIBILITY.md](NODEJS_ANGULAR_COMPATIBILITY.md)**
 
 ### 3. Access the Application
 - **Frontend**: http://localhost:4200/django_reddit
