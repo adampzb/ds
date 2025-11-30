@@ -18,10 +18,6 @@
     "strictNullChecks": false,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
     "paths": {
       "@reddit/app/*": ["src/app/*"],
       "@reddit/core/*": ["src/app/core/*"],
