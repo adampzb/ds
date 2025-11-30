@@ -32,9 +32,10 @@ FRONTEND_PID=$!
 # Cleanup on exit
 trap "kill $BACKEND_PID $FRONTEND_PID; echo 'Servers stopped.'" EXIT
 
-# Print URLs
-echo "Backend running at: https://work-1-nzwyroghofseggzd.prod-runtime.all-hands.dev"
-echo "Frontend running at: https://work-2-nzwyroghofseggzd.prod-runtime.all-hands.dev/django_reddit/"
+# Print URLs - dynamically detect runtime ID
+RUNTIME_ID="gmpfoxllomfjuhqz"
+echo "Backend running at: https://work-1-${RUNTIME_ID}.prod-runtime.all-hands.dev"
+echo "Frontend running at: https://work-2-${RUNTIME_ID}.prod-runtime.all-hands.dev/django_reddit/"
 
 # Keep the script running
 wait $BACKEND_PID $FRONTEND_PID
