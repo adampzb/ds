@@ -1,11 +1,10 @@
 from django import forms
 from django.contrib import admin
-from django_ckeditor_5.widgets import CKEditor5Widget
 from apps.groups.models import Group, GroupMember, GroupInvite, GroupRule, MemberRequest
 
 
 class GroupForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditor5Widget(config_name='default'))
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 6, 'cols': 80}))
 
     class Meta:
         model = Group
@@ -118,7 +117,7 @@ class GroupInviteAdmin(admin.ModelAdmin):
 
 
 class RuleForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditor5Widget(config_name='default'))
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 6, 'cols': 80}))
 
     class Meta:
         model = GroupRule

@@ -1,11 +1,10 @@
 from django import forms
 from django.contrib import admin
-from django_ckeditor_5.widgets import CKEditor5Widget
 from apps.posts.models import Post
 
 
 class PostForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditor5Widget(config_name='extends'))
+    content = forms.CharField(widget=forms.Textarea(attrs={'rows': 10, 'cols': 80}))
 
     class Meta:
         model = Post

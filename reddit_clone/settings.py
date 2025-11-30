@@ -80,7 +80,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'corsheaders',
     'guardian',
-    'django_ckeditor_5',
+
     'django_filters',
     'drf_yasg',
     'apps.core',
@@ -363,84 +363,4 @@ CORS_ALLOW_METHODS = [
 ]
 
 
-####################################
-    ##  CKEDITOR 5 CONFIGURATION ##
-####################################
 
-# CKEditor 5 settings - SECURITY: Migrated from vulnerable CKEditor 4.22.1
-CKEDITOR_5_CONFIGS = {
-    'default': {
-        'toolbar': [
-            'heading', '|', 'bold', 'italic', 'underline', 'strikethrough', 
-            'subscript', 'superscript', '|', 'link', 'bulletedList', 
-            'numberedList', 'blockQuote', '|', 'outdent', 'indent', '|',
-            'insertTable', 'imageUpload', 'mediaEmbed', '|', 'undo', 'redo',
-            'sourceEditing', '|', 'removeFormat', 'findAndReplace'
-        ],
-        'height': 300,
-        'width': '100%',
-        'language': 'en',
-        'image': {
-            'toolbar': [
-                'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
-            ]
-        },
-        'table': {
-            'contentToolbar': [
-                'tableColumn', 'tableRow', 'mergeTableCells',
-                'tableProperties', 'tableCellProperties'
-            ]
-        },
-        'heading': {
-            'options': [
-                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
-                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
-                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
-                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'},
-            ]
-        }
-    },
-    'extends': {
-        'toolbar': [
-            'heading', '|', 'bold', 'italic', 'underline', 'strikethrough',
-            'code', 'subscript', 'superscript', '|', 'link', 'bulletedList',
-            'numberedList', 'todoList', 'blockQuote', 'codeBlock', '|',
-            'outdent', 'indent', 'alignment', '|', 'insertTable', 'imageUpload',
-            'mediaEmbed', 'horizontalLine', '|', 'fontSize', 'fontColor',
-            'fontBackgroundColor', 'highlight', '|', 'undo', 'redo',
-            'sourceEditing', '|', 'removeFormat', 'findAndReplace', 'selectAll'
-        ],
-        'height': 400,
-        'width': '100%',
-        'language': 'en',
-        'image': {
-            'toolbar': [
-                'imageTextAlternative', 'imageStyle:full', 'imageStyle:side',
-                'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight'
-            ]
-        },
-        'table': {
-            'contentToolbar': [
-                'tableColumn', 'tableRow', 'mergeTableCells',
-                'tableProperties', 'tableCellProperties'
-            ]
-        },
-        'heading': {
-            'options': [
-                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
-                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
-                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
-                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'},
-                {'model': 'heading4', 'view': 'h4', 'title': 'Heading 4', 'class': 'ck-heading_heading4'},
-            ]
-        }
-    }
-}
-
-# Upload settings for CKEditor 5
-CKEDITOR_5_UPLOAD_PATH = 'uploads/ckeditor5/'
-CKEDITOR_5_IMAGE_BACKEND = "pillow"
-CKEDITOR_5_MAX_FILE_SIZE = 5  # Max size in MB
-CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'webp', 'tiff']
-
-###################################
