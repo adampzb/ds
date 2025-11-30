@@ -3,6 +3,7 @@ import { Comment } from '@reddit/core/models/comment.model';
 import { User } from '@reddit/core/models/user.model';
 
 @Component({
+  standalone: false,
   selector: 'app-comment-create',
   templateUrl: './comment-create.component.html',
   styleUrls: ['./comment-create.component.scss']

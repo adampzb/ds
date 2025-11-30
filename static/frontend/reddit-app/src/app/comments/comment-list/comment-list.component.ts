@@ -4,6 +4,7 @@ import { User } from '@reddit/core/models/user.model';
 
 
 @Component({
+  standalone: false,
   selector: 'app-comment-list',
   templateUrl: './comment-list.component.html',
   styleUrls: ['./comment-list.component.scss']

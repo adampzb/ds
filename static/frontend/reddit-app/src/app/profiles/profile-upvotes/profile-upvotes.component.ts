@@ -8,6 +8,7 @@ import { Group } from '@reddit/core/models/group.model';
 import { UserComment } from '@reddit/core/models/comment.model';
 
 @Component({
+  standalone: false,
   selector: 'app-profile-upvotes',
   templateUrl: './profile-upvotes.component.html',
   styleUrls: ['./profile-upvotes.component.scss']

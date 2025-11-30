@@ -6,6 +6,7 @@ import { User } from '@reddit/core/models/user.model';
 import { Post } from '@reddit/core/models/post.model';
 
 @Component({
+  standalone: false,
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']

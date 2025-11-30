@@ -8,6 +8,7 @@ import { User } from '@reddit/core/models/user.model';
 import { Post } from '@reddit/core/models/post.model';
 import { Group } from '@reddit/core/models/group.model';
 @Component({
+  standalone: false,
   selector: 'app-group-post',
   templateUrl: './group-post.component.html',
   styleUrls: ['./group-post.component.scss']

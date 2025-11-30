@@ -24,7 +24,7 @@
         </ng-container>
 
         <ng-template #buttonview>
-          <div *ngIf="!showSpinner && next" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px" style="height: 100px">
+          <div *ngIf="!showLoader && next" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px" style="height: 100px">
             <button mat-raised-button (click)="loadMorePosts()">Load more posts</button>
           </div>
         </ng-template>

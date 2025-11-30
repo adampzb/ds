@@ -8,6 +8,7 @@ import { Group } from '@reddit/core/models/group.model';
 import { UserComment } from '@reddit/core/models/comment.model';
 
 @Component({
+  standalone: false,
   selector: 'app-profiles',
   templateUrl: './profiles.component.html',
   styleUrls: ['./profiles.component.scss']
@@ -19,7 +20,7 @@ export class ProfileComponent implements OnInit {
   showLoader: boolean = false;
   next: string;
   userGroups: Group[] = [];
-  modGroups: Group[] = [];
+  modGroups: any[] = [];
   userComments: UserComment[] = [];
   currentUser: string;
   self: boolean = false;

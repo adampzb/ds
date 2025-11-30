@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '@reddit/app/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
+  standalone: false,
   selector: 'app-group-search',
   templateUrl: './group-search.component.html',
   styleUrls: ['./group-search.component.scss']

@@ -3,6 +3,7 @@ import { User } from '@reddit/core/models/user.model';
 
 
 @Component({
+  standalone: false,
   selector: 'app-comment-user',
   templateUrl: './comment-user.component.html',
   styleUrls: ['./comment-user.component.scss']

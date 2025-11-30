@@ -7,7 +7,7 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { MatDialog } from '@angular/material/dialog';
 import { HttpEventType } from '@angular/common/http';
 // import FroalaEditor from 'froala-editor';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { PostService } from '@reddit/core/services/post/post.service';
 import { UserService } from '@reddit/core/services/user/user.service';
 import { GroupService } from '@reddit/core/services/group/group.service';
@@ -16,6 +16,7 @@ import { Group } from '@reddit/core/models/group.model';
 
 
 @Component({
+  standalone: false,
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.scss']

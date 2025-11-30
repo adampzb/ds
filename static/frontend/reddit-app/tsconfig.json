@@ -3,29 +3,37 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./src",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
-    "target": "es2015",
-    "module": "es2020",
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
     "strict": false,
     "noImplicitAny": false,
     "strictNullChecks": false,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "lib": [
-      "es2018",
+      "ES2022",
       "dom"
     ],
     "paths": {
       "@reddit/app/*": ["src/app/*"],
       "@reddit/core/*": ["src/app/core/*"],
       "@reddit/env/*": ["src/environments/*"],
-      "@reddit/assets/*": ["src/assets/*"],
+      "@reddit/assets/*": ["src/assets/*"]
     }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "strictStandalone": false
   }
 }

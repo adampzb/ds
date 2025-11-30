@@ -7,6 +7,7 @@ import { User } from '@reddit/core/models/user.model';
 
 
 @Component({
+  standalone: false,
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.scss']

@@ -73,7 +73,6 @@
       [uuid]="uuid"
       [new]="false"
       [comment_obj]="comment"
-      [source]="source"
       (comment_response)="commentEditted($event)"
       [nested]="nested">
     </app-comment-edit>
@@ -95,8 +94,7 @@
   <app-comment-group
     [uuid]="uuid"
     [user]="user"
-    [nested]="nested"
-    [max_nest_depth]="max_nest_depth"
+    [max_nest_depth]="max_nested_depth"
     [current_nest_depth]="current_nest_depth + 1"
     [parent]="comment.id"
     [child_group]="true">
