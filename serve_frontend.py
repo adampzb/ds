@@ -5,9 +5,9 @@ import sys
 import mimetypes
 import urllib.parse
 
-PORT = 8080
+PORT = 12001
 DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
-                         "static/frontend/reddit-app/dist")
+                         "static")
 
 # Ensure all common MIME types are registered
 mimetypes.add_type('application/javascript', '.js')
