@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import Sum
 
 from comments.abstracts import AbstractComment, AbstractCommentVote
-from posts.models import Post
+from apps.posts.models import Post
 
 
 class PostComment(AbstractComment):

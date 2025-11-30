@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from reports.models import PostReport
+from apps.reports.models import PostReport
 
 
 class PostReportSerializer(serializers.ModelSerializer):

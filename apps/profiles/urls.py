@@ -1,6 +1,6 @@
 from django.urls import path, include, re_path
-from .router import router
-from profiles.views import IsAuthenticatedView
+from apps.profiles.router import router
+from apps.profiles.views import IsAuthenticatedView
 
 
 urlpatterns = [

@@ -1,9 +1,9 @@
-from posts.views import PostViewSet, PostSelfViewSet
+from apps.posts.views import PostViewSet, PostSelfViewSet
 from rest_framework_nested import routers
-from bookmarks.views import PostBookmarkViewSet
-from comments.views import PostCommentViewSet
-from followers.views import PostFollowerViewSet
-from reports.views import PostReportViewSet
+from apps.bookmarks.views import PostBookmarkViewSet
+from apps.comments.views import PostCommentViewSet
+from apps.followers.views import PostFollowerViewSet
+from apps.reports.views import PostReportViewSet
 
 router = routers.SimpleRouter()
 router.register(r'posts', PostViewSet)

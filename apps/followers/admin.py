@@ -1,5 +1,5 @@
 from django.contrib import admin
-from followers.models import PostFollower, UserFollower
+from apps.followers.models import PostFollower, UserFollower
 
 
 @admin.register(PostFollower)

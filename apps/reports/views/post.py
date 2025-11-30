@@ -4,10 +4,10 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from core.views import BaseReadOnlyViewSet, BaseViewSet
-from posts.models import Post
-from reports.models import PostReport
-from reports.serializers import PostReportSerializer, PostReportLightSerializer
+from apps.core.views import BaseReadOnlyViewSet, BaseViewSet
+from apps.posts.models import Post
+from apps.reports.models import PostReport
+from apps.reports.serializers import PostReportSerializer, PostReportLightSerializer
 
 
 class PostReportPagination(PageNumberPagination):

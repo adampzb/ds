@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from bookmarks.models import PostBookmark
-from core.serializers import ModelReadOnlySerializer
+from apps.bookmarks.models import PostBookmark
+from apps.core.serializers import ModelReadOnlySerializer
 
 
 class PostBookmarkSerializer(serializers.ModelSerializer):
@@ -33,6 +33,6 @@ class PostBookmarkReadOnlySerializer(ModelReadOnlySerializer):
 
     def get_post(self, obj):
         if hasattr(obj, 'post'):
-            from posts.serializers import PostReadOnlySerializer
+            from apps.posts.serializers import PostReadOnlySerializer
             return PostReadOnlySerializer(obj.post).data
         return None

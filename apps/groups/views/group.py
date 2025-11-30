@@ -3,16 +3,16 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
-from core.views import BaseViewSet, BaseReadOnlyViewSet
-from groups.models import Group, GroupMember, MemberRequest
+from apps.core.views import BaseViewSet, BaseReadOnlyViewSet
+from apps.groups.models import Group, GroupMember, MemberRequest
 from django.contrib.auth.models import User
 from groups.filters import GroupFilterSet
-from groups.serializers import (
+from apps.groups.serializers import (
     GroupReadOnlySerializer, GroupSerializer,
     GroupCreateSerializer, GroupHeavySerializer
 )
-from posts.models import Post
-from posts.serializers import PostReadOnlySerializer
+from apps.posts.models import Post
+from apps.posts.serializers import PostReadOnlySerializer
 from groups.permissions import (
     HasGroupEditPermissions, HasGroupDeletePermissions
 )

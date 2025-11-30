@@ -1,7 +1,7 @@
-from core.views import BaseReadOnlyViewSet
+from apps.core.views import BaseReadOnlyViewSet
 
-from reports.models import ReportType
-from reports.serializers import ReportTypeSerializer
+from apps.reports.models import ReportType
+from apps.reports.serializers import ReportTypeSerializer
 
 
 class ReportTypeViewSet(BaseReadOnlyViewSet):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from core.serializers import ModelReadOnlySerializer
-from groups.models import MemberRequest, GroupMember
+from apps.core.serializers import ModelReadOnlySerializer
+from apps.groups.models import MemberRequest, GroupMember
 
 
 class MemberRequestReadOnlySerializer(ModelReadOnlySerializer):

@@ -4,10 +4,10 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from core.views import BaseReadOnlyViewSet, BaseViewSet
-from posts.models import Post
-from bookmarks.models import PostBookmark
-from bookmarks.serializers import PostBookmarkSerializer
+from apps.core.views import BaseReadOnlyViewSet, BaseViewSet
+from apps.posts.models import Post
+from apps.bookmarks.models import PostBookmark
+from apps.bookmarks.serializers import PostBookmarkSerializer
 
 
 class PostBookmarkPagination(PageNumberPagination):

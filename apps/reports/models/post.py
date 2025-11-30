@@ -1,7 +1,7 @@
 from django.db import models
 
 from reports.abstracts import AbstractReport
-from posts.models import Post
+from apps.posts.models import Post
 
 
 class PostReport(AbstractReport):

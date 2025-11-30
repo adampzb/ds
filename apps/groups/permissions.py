@@ -1,5 +1,5 @@
 from rest_framework import permissions
-from groups.models import Group
+from apps.groups.models import Group
 
 
 class HasGroupEditPermissions(permissions.BasePermission):

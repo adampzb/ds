@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from reports.models import ReportType
+from apps.reports.models import ReportType
 
 class Command(BaseCommand):
     help = 'Populate Report Types'

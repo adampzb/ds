@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from reports.models import UserProfileReport
+from apps.reports.models import UserProfileReport
 
 
 class UserProfileReportSerializer(serializers.ModelSerializer):

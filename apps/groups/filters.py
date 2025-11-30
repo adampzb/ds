@@ -1,5 +1,5 @@
 import django_filters
-from groups.models import Group, GroupMember
+from apps.groups.models import Group, GroupMember
 
 
 class GroupFilterSet(django_filters.rest_framework.FilterSet):

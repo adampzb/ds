@@ -2,10 +2,10 @@ from django.db import models
 from django.db.models import Sum
 from django.contrib.auth.models import User
 
-from core.models import TimeStampedModel
-from tags.models import Tag
+from apps.core.models import TimeStampedModel
+from apps.tags.models import Tag
 from django.core.validators import MinValueValidator, MaxValueValidator
-from groups.models import Group
+from apps.groups.models import Group
 import uuid
 
 class Post(TimeStampedModel):

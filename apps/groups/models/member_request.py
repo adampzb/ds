@@ -1,7 +1,7 @@
 from django.db import models
-from core.models import TimeStampedModel
+from apps.core.models import TimeStampedModel
 from django.contrib.auth.models import User
-from groups.models import Group
+from apps.groups.models import Group
 
 
 class MemberRequest(TimeStampedModel):

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from core.serializers import ModelReadOnlySerializer
+from apps.core.serializers import ModelReadOnlySerializer
 
 
 class UserSerializer(serializers.ModelSerializer):

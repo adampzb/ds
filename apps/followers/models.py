@@ -1,8 +1,8 @@
 from django.db import models
 from followers.abstracts import AbstractFollower
-from posts.models import Post
+from apps.posts.models import Post
 from django.contrib.auth.models import User
-from comments.models import PostComment
+from apps.comments.models import PostComment
 
 
 class PostFollower(AbstractFollower):

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Tag
-from core.views import BaseViewSet
-from .serializers import TagSerializer
+from apps.core.views import BaseViewSet
+from apps.tags.serializers import TagSerializer
 from .filters import TagFilterSet
 
 

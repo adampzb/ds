@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from reports.models import (
+from apps.reports.models import (
     ReportType, UserProfileReport, PostReport
 )
 

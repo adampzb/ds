@@ -75,15 +75,15 @@ INSTALLED_APPS = [
     'django_ckeditor_5',
     'django_filters',
     'drf_yasg',
-    'core',
-    'tags',
-    'posts',
-    'profiles',
-    'comments',
-    'bookmarks',
-    'followers',
-    'reports',
-    'groups'
+    'apps.core',
+    'apps.tags',
+    'apps.posts',
+    'apps.profiles',
+    'apps.comments',
+    'apps.bookmarks',
+    'apps.followers',
+    'apps.reports',
+    'apps.groups'
 ]
 
 REST_FRAMEWORK = {

@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from core.services import mail
-from reports.models import PostReport, UserProfileReport
+from apps.reports.models import PostReport, UserProfileReport
 
 
 @receiver(post_save, sender=PostReport)

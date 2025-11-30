@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .router import router, group_router
+from apps.groups.router import router, group_router
 
 urlpatterns = [
     path('api/v1/', include(router.urls)),

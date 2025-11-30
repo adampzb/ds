@@ -1,12 +1,12 @@
-from posts.models import Post, PostVote
-from core.views import BaseViewSet, BaseReadOnlyViewSet
-from posts.serializers import PostSerializer, PostEditSerializer
+from apps.posts.models import Post, PostVote
+from apps.core.views import BaseViewSet, BaseReadOnlyViewSet
+from apps.posts.serializers import PostSerializer, PostEditSerializer
 from rest_framework import viewsets, generics, status, filters
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
-from comments.serializers import PostCommentCreateSerializer, PostCommentSerializer
+from apps.comments.serializers import PostCommentCreateSerializer, PostCommentSerializer
 from django.contrib.auth.models import User
 from posts.filters import PostFilterSet
 

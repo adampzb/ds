@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 from django_ckeditor_5.widgets import CKEditor5Widget
-from posts.models import Post
+from apps.posts.models import Post
 
 
 class PostForm(forms.ModelForm):

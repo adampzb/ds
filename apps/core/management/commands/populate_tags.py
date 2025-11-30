@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from tags.models import Tag, TagType
+from apps.tags.models import Tag, TagType
 
 import csv
 from pathlib import Path

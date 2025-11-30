@@ -1,19 +1,19 @@
 from django.shortcuts import render
 import datetime
-from profiles.serializers import UserSerializer
+from apps.profiles.serializers import UserSerializer
 from django.contrib.auth.models import User
-from core.views import BaseViewSet
+from apps.core.views import BaseViewSet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status, filters
-from comments.serializers import PostCommentLightSerializer, PostCommentVoteSerializer
-from groups.serializers import GroupInviteReadOnlySerializer, GroupSerializer, MemberRequestSerializer
-from posts.serializers import PostVoteHeavySerializer
-from bookmarks.serializers import PostBookmarkReadOnlySerializer
-from bookmarks.models import PostBookmark
-from profiles.models import UserMetaInfo
+from apps.comments.serializers import PostCommentLightSerializer, PostCommentVoteSerializer
+from apps.groups.serializers import GroupInviteReadOnlySerializer, GroupSerializer, MemberRequestSerializer
+from apps.posts.serializers import PostVoteHeavySerializer
+from apps.bookmarks.serializers import PostBookmarkReadOnlySerializer
+from apps.bookmarks.models import PostBookmark
+from apps.profiles.models import UserMetaInfo
 
 
 class ProfileViewSet(BaseViewSet):

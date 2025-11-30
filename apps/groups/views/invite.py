@@ -3,11 +3,11 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
-from core.views import BaseViewSet, BaseReadOnlyViewSet
-from groups.models import GroupInvite
+from apps.core.views import BaseViewSet, BaseReadOnlyViewSet
+from apps.groups.models import GroupInvite
 from django.contrib.auth.models import User
-from groups.serializers import GroupInviteSerializer
-from groups.models import Group
+from apps.groups.serializers import GroupInviteSerializer
+from apps.groups.models import Group
 
 
 class GroupInvitePagination(PageNumberPagination):

@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from core.serializers import ModelReadOnlySerializer
-from groups.models import Group, GroupMember, MemberRequest
-from tags.serializers import TagSerializer, TagReadOnlySerializer
+from apps.core.serializers import ModelReadOnlySerializer
+from apps.groups.models import Group, GroupMember, MemberRequest
+from apps.tags.serializers import TagSerializer, TagReadOnlySerializer
 
 
 class GroupReadOnlySerializer(ModelReadOnlySerializer):
@@ -50,7 +50,7 @@ class GroupSerializer(serializers.ModelSerializer):
         if request and request.user and request.user.is_authenticated:
             member_request = MemberRequest.objects.filter(group=obj, user=request.user).first()
             if member_request is not None:
-                from groups.serializers import MemberRequestReadOnlySerializer
+                from apps.groups.serializers import MemberRequestReadOnlySerializer
                 return MemberRequestReadOnlySerializer(member_request).data
         return None
 
@@ -102,7 +102,7 @@ class GroupHeavySerializer(serializers.ModelSerializer):
 
     def get_rules(self, obj):
         if hasattr(obj, 'rules'):
-            from groups.serializers import GroupRuleSerializer
+            from apps.groups.serializers import GroupRuleSerializer
             return GroupRuleSerializer(obj.rules.all(), many=True).data
         return []
 
@@ -116,7 +116,7 @@ class GroupHeavySerializer(serializers.ModelSerializer):
         if request and request.user and request.user.is_authenticated:
             member_request = MemberRequest.objects.filter(group=obj, user=request.user).first()
             if member_request is not None:
-                from groups.serializers import MemberRequestReadOnlySerializer
+                from apps.groups.serializers import MemberRequestReadOnlySerializer
                 return MemberRequestReadOnlySerializer(member_request).data
         return None
 

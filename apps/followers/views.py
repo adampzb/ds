@@ -3,11 +3,11 @@ from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
-from core.views import BaseReadOnlyViewSet, BaseViewSet
-from followers.models import PostFollower, UserFollower
-from posts.models import Post
+from apps.core.views import BaseReadOnlyViewSet, BaseViewSet
+from apps.followers.models import PostFollower, UserFollower
+from apps.posts.models import Post
 from django.contrib.auth.models import User
-from followers.serializers import PostFollowerSerializer, UserFollowerSerializer
+from apps.followers.serializers import PostFollowerSerializer, UserFollowerSerializer
 
 
 class PostFollowerPagination(PageNumberPagination):

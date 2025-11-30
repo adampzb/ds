@@ -8,10 +8,10 @@ from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from core.views import BaseReadOnlyViewSet, BaseViewSet
-from posts.models import Post
-from comments.models import PostComment, PostCommentVote
-from comments.serializers import PostCommentSerializer, PostCommentCreateSerializer
+from apps.core.views import BaseReadOnlyViewSet, BaseViewSet
+from apps.posts.models import Post
+from apps.comments.models import PostComment, PostCommentVote
+from apps.comments.serializers import PostCommentSerializer, PostCommentCreateSerializer
 from comments.services import add_mentioned_users
 
 

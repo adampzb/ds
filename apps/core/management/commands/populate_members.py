@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 import secrets
 import string
 import requests
-from groups.models import Group, GroupMember
+from apps.groups.models import Group, GroupMember
 import random
 
 

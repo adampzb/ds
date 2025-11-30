@@ -1,7 +1,7 @@
 from rest_framework_nested import routers
-from profiles.views import ProfileViewSet
-from reports.views import UserProfileReportViewSet
-from followers.views import UserFollowerViewSet
+from apps.profiles.views import ProfileViewSet
+from apps.reports.views import UserProfileReportViewSet
+from apps.followers.views import UserFollowerViewSet
 
 router = routers.SimpleRouter()
 router.register(r'users', ProfileViewSet)

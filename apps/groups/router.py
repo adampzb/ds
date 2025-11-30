@@ -1,5 +1,5 @@
 from rest_framework_nested import routers
-from groups.views import (
+from apps.groups.views import (
     GroupViewSet, GroupMemberViewSet,
     MemberRequestViewSet, GroupInviteViewSet,
     GroupRuleViewSet

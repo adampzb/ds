@@ -4,10 +4,10 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from core.views import BaseReadOnlyViewSet, BaseViewSet
+from apps.core.views import BaseReadOnlyViewSet, BaseViewSet
 from django.contrib.auth.models import User
-from reports.models import UserProfileReport
-from reports.serializers import UserProfileReportSerializer, UserProfileReportLightSerializer
+from apps.reports.models import UserProfileReport
+from apps.reports.serializers import UserProfileReportSerializer, UserProfileReportLightSerializer
 
 
 class UserProfileReportPagination(PageNumberPagination):

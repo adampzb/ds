@@ -1,6 +1,6 @@
 from rest_framework_nested import routers
 
-from reports.views import ReportTypeViewSet
+from apps.reports.views import ReportTypeViewSet
 
 router = routers.SimpleRouter()
 

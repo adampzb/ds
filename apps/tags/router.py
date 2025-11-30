@@ -1,6 +1,6 @@
 from rest_framework_nested import routers
 
-from tags.views import (
+from apps.tags.views import (
     TagViewSet,
 )
 

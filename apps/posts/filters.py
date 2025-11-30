@@ -1,5 +1,5 @@
 import django_filters
-from posts.models import Post
+from apps.posts.models import Post
 from django.db import models
 
 

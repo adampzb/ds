@@ -3,7 +3,7 @@ from django.apps import AppConfig
 
 class GroupsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'groups'
+    name = 'apps.groups'
 
     def ready(self):
-        import groups.signals
+        import apps.groups.signals

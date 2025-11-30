@@ -1,7 +1,7 @@
 from django.db import models
 
 from bookmarks.abstracts import AbstractBookmark
-from posts.models import Post
+from apps.posts.models import Post
 
 
 class PostBookmark(AbstractBookmark):

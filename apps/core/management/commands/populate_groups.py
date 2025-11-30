@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from tags.models import Tag, TagType
-from groups.models import Group, GroupMember
+from apps.tags.models import Tag, TagType
+from apps.groups.models import Group, GroupMember
 from django.contrib.auth.models import User
 
 import csv

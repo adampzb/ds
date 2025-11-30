@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from posts.models import Post, PostVote
-from profiles.serializers import UserSerializer
-from tags.serializers import TagSerializer
-from comments.models import PostComment
-from bookmarks.models import PostBookmark
-from bookmarks.serializers import PostBookmarkLightSerializer
+from apps.posts.models import Post, PostVote
+from apps.profiles.serializers import UserSerializer
+from apps.tags.serializers import TagSerializer
+from apps.comments.models import PostComment
+from apps.bookmarks.models import PostBookmark
+from apps.bookmarks.serializers import PostBookmarkLightSerializer
 from django.db.models import Sum
-from core.serializers import ModelReadOnlySerializer
-from groups.serializers import GroupSerializer, GroupReadOnlyLightSerializer
+from apps.core.serializers import ModelReadOnlySerializer
+from apps.groups.serializers import GroupSerializer, GroupReadOnlyLightSerializer
 
 
 class PostVoteSerializer(serializers.ModelSerializer):

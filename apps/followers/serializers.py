@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from followers.models import PostFollower, UserFollower
+from apps.followers.models import PostFollower, UserFollower
 
 
 class PostFollowerSerializer(serializers.ModelSerializer):

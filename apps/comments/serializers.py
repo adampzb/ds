@@ -5,8 +5,8 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from comments.models import PostComment, PostCommentVote
-from profiles.serializers import UserSerializer
+from apps.comments.models import PostComment, PostCommentVote
+from apps.profiles.serializers import UserSerializer
 
 
 class PostCommentLightSerializer(serializers.ModelSerializer):

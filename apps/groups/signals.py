@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
-from groups.models import Group, GroupMember, MemberRequest
+from apps.groups.models import Group, GroupMember, MemberRequest
 from groups.services import assign_permissions
 
 @receiver(post_save, sender=MemberRequest)

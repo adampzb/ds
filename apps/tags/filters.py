@@ -1,5 +1,5 @@
 import django_filters
-from tags.models import Tag
+from apps.tags.models import Tag
 
 
 class TagFilterSet(django_filters.rest_framework.FilterSet):
