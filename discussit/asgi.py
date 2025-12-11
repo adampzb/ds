@@ -1,5 +1,5 @@
 """
-ASGI config for reddit_clone project.
+ASGI config for discussit project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'reddit_clone.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'discussit.settings')
 
 application = get_asgi_application()

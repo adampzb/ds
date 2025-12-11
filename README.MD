@@ -330,7 +330,7 @@ discuss/
 │   ├── profiles/                 # User profiles
 │   ├── reports/                  # Content reporting
 │   └── tags/                     # Content tagging
-├── reddit_clone/                 # Django project settings
+├── discussit/                 # Django project settings
 ├── static/frontend/reddit-app/   # Angular frontend
 │   ├── src/app/                  # Angular components
 │   ├── src/environments/         # Environment configs

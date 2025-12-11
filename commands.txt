@@ -1,7 +1,7 @@
 USING docker
-docker build --tag reddit_clone:latest .
+docker build --tag discussit:latest .
 docker image ls
-docker run --publish 8000:8000 reddit_clone
+docker run --publish 8000:8000 discussit
 
 ========================================================
 
