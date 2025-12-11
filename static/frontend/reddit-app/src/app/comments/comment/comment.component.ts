@@ -8,8 +8,9 @@ import { ConfirmationDialogComponent } from '@reddit/app/components/confirmation
 
 
 @Component({
-  standalone: false,
+  
   selector: 'app-comment',
+  standalone: false,
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss']
 })

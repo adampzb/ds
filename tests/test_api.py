@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
-from posts.models import Post
+from apps.posts.models import Post
 
 
 class PostAPITest(TestCase):

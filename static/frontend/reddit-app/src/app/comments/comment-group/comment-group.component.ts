@@ -7,8 +7,9 @@ import { environment } from '@reddit/env/environment';
 import { Router } from '@angular/router';
 
 @Component({
-  standalone: false,
+  
   selector: 'app-comment-group',
+  standalone: false,
   templateUrl: './comment-group.component.html',
   styleUrls: ['./comment-group.component.scss']
 })

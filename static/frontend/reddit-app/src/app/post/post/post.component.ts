@@ -6,8 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ReportDialogComponent } from '@reddit/app/components/report-dialog/report-dialog.component';
 
 @Component({
-  standalone: false,
   selector: 'app-post',
+  standalone: false,
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })

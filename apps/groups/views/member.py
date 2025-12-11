@@ -7,7 +7,7 @@ from apps.core.views import BaseViewSet, BaseReadOnlyViewSet
 from apps.groups.models import GroupMember
 from django.contrib.auth.models import User
 from apps.groups.serializers import GroupMemberSerializer
-from groups.filters import GroupMemberFilterSet
+from apps.groups.filters import GroupMemberFilterSet
 
 
 class GroupMemberPagination(PageNumberPagination):

@@ -4,8 +4,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { ReportService } from '@reddit/core/services/report/report.service';
 
 @Component({
-  standalone: false,
   selector: 'app-report-dialog',
+  standalone: false,
   templateUrl: './report-dialog.component.html',
   styleUrls: ['./report-dialog.component.scss']
 })

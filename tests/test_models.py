@@ -3,7 +3,7 @@ Basic model tests for the Reddit clone application
 """
 from django.test import TestCase
 from django.contrib.auth.models import User
-from posts.models import Post
+from apps.posts.models import Post
 
 
 class PostModelTest(TestCase):

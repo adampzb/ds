@@ -8,7 +8,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from apps.comments.serializers import PostCommentCreateSerializer, PostCommentSerializer
 from django.contrib.auth.models import User
-from posts.filters import PostFilterSet
+from apps.posts.filters import PostFilterSet
 
 
 class PostPagination(PageNumberPagination):

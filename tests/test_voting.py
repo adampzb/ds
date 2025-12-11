@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from rest_framework.test import APITestCase
 from rest_framework import status
-from posts.models import Post, PostVote
+from apps.posts.models import Post, PostVote
 
 
 class VotingModelTest(TestCase):

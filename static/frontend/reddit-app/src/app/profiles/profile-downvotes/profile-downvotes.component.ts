@@ -8,8 +8,9 @@ import { Group } from '@reddit/core/models/group.model';
 import { UserComment } from '@reddit/core/models/comment.model';
 
 @Component({
-  standalone: false,
+  
   selector: 'app-profile-downvotes',
+  standalone: false,
   templateUrl: './profile-downvotes.component.html',
   styleUrls: ['./profile-downvotes.component.scss']
 })

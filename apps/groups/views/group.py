@@ -6,14 +6,14 @@ from rest_framework.permissions import IsAuthenticated
 from apps.core.views import BaseViewSet, BaseReadOnlyViewSet
 from apps.groups.models import Group, GroupMember, MemberRequest
 from django.contrib.auth.models import User
-from groups.filters import GroupFilterSet
+from apps.groups.filters import GroupFilterSet
 from apps.groups.serializers import (
     GroupReadOnlySerializer, GroupSerializer,
     GroupCreateSerializer, GroupHeavySerializer
 )
 from apps.posts.models import Post
 from apps.posts.serializers import PostReadOnlySerializer
-from groups.permissions import (
+from apps.groups.permissions import (
     HasGroupEditPermissions, HasGroupDeletePermissions
 )
 

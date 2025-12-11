@@ -7,8 +7,9 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { GroupService } from '@reddit/core/services/group/group.service';
 
 @Component({
-  standalone: false,
+  
   selector: 'app-create-group',
+  standalone: false,
   templateUrl: './create-group.component.html',
   styleUrls: ['./create-group.component.scss']
 })

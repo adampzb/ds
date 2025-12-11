@@ -8,8 +8,9 @@ import { Group } from '@reddit/core/models/group.model';
 import { UserComment } from '@reddit/core/models/comment.model';
 
 @Component({
-  standalone: false,
+  
   selector: 'app-profiles',
+  standalone: false,
   templateUrl: './profiles.component.html',
   styleUrls: ['./profiles.component.scss']
 })

@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  standalone: false,
   selector: 'app-sign-out',
+  standalone: false,
   templateUrl: './sign-out.component.html',
   styleUrls: ['./sign-out.component.scss']
 })

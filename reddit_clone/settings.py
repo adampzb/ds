@@ -50,8 +50,8 @@ if ENVIRONMENT == 'production':
         ALLOWED_HOSTS = [
             'localhost', 
             '127.0.0.1',
-            'work-1-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev',
-            'work-2-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev'
+            'localhost',
+            '127.0.0.1'
         ]
 else:
     # Development settings - Allow all hosts for flexibility
@@ -113,7 +113,7 @@ REST_AUTH = {
 }
 
 # CSRF Configuration
-csrf_origins = get_env_variable('CSRF_TRUSTED_ORIGINS', 'https://work-1-woavzjjseoqpclwv.prod-runtime.all-hands.dev,https://work-2-woavzjjseoqpclwv.prod-runtime.all-hands.dev')
+csrf_origins = get_env_variable('CSRF_TRUSTED_ORIGINS', 'http://localhost:8000,http://127.0.0.1:8000,')
 CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in csrf_origins.split(',') if origin.strip()]
 
 MIDDLEWARE = [
@@ -335,7 +335,7 @@ else:
     CORS_ORIGIN_ALLOW_ALL = True
     # Also set specific origins for better security when possible
     cors_origins = get_env_variable('CORS_ALLOWED_ORIGINS', 
-        'http://localhost:4200,http://127.0.0.1:4200,http://localhost:12001,http://127.0.0.1:12001,'
+        'http://localhost:8000,http://127.0.0.1:8000,http://localhost:4200,http://127.0.0.1:4200,http://localhost:12001,http://127.0.0.1:12001,'
         'https://work-1-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev,'
         'https://work-2-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev')
     CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]

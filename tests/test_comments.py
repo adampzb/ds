@@ -5,8 +5,8 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from rest_framework.test import APITestCase
 from rest_framework import status
-from posts.models import Post
-from comments.models import PostComment
+from apps.posts.models import Post
+from apps.comments.models import PostComment
 
 
 class CommentModelTest(TestCase):

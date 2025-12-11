@@ -1,6 +1,6 @@
 from django.db import models
 
-from bookmarks.abstracts import AbstractBookmark
+from apps.bookmarks.abstracts import AbstractBookmark
 from apps.posts.models import Post
 
 

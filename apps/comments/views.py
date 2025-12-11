@@ -12,7 +12,7 @@ from apps.core.views import BaseReadOnlyViewSet, BaseViewSet
 from apps.posts.models import Post
 from apps.comments.models import PostComment, PostCommentVote
 from apps.comments.serializers import PostCommentSerializer, PostCommentCreateSerializer
-from comments.services import add_mentioned_users
+from apps.comments.services import add_mentioned_users
 
 
 class PostCommentPagination(PageNumberPagination):

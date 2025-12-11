@@ -6,8 +6,9 @@ import { User } from '@reddit/core/models/user.model';
 import { Post } from '@reddit/core/models/post.model';
 
 @Component({
-  standalone: false,
+  
   selector: 'app-profile-posts',
+  standalone: false,
   templateUrl: './profile-posts.component.html',
   styleUrls: ['./profile-posts.component.scss']
 })

@@ -15,8 +15,8 @@ import { Group } from '@reddit/core/models/group.model';
 
 
 @Component({
-  standalone: false,
   selector: 'app-create-post',
+  standalone: false,
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.scss']
 })

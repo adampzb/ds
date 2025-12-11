@@ -1,5 +1,5 @@
 from django.db import models
-from followers.abstracts import AbstractFollower
+from apps.followers.abstracts import AbstractFollower
 from apps.posts.models import Post
 from django.contrib.auth.models import User
 from apps.comments.models import PostComment

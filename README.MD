@@ -8,23 +8,47 @@
 
 A **modern full-stack Reddit clone** built with **Django REST Framework** backend and **Angular** frontend. This application provides a complete social media platform with user authentication, community features, and real-time interactions, now updated to the latest framework versions for enhanced security and performance.
 
-## ✨ Recent Updates (November 2025)
+**🎉 Recently Fixed & Improved:**
+- ✅ Fixed all Python import issues in tests and apps
+- ✅ Resolved Angular standalone component conflicts
+- ✅ Upgraded Angular to 21.0.3 with security patches
+- ✅ Fixed all npm security vulnerabilities
+- ✅ Added ESLint configuration for code quality
+- ✅ Verified database setup with sample data
+- ✅ Ensured all dependencies match requirements exactly
+
+## ✨ Recent Updates (December 2025)
 
 ### 🔄 Major Framework Updates
-- **Angular**: Updated from 19.2.16 → **21.0.1** (latest stable)
+- **Angular**: Updated from 19.2.16 → **21.0.3** (latest secure version)
 - **Django**: Updated from 5.1.3 → **5.2.8** (latest stable)
 - **TypeScript**: Updated to **5.9.3** for modern JavaScript features
 - **Dependencies**: All packages updated to latest secure versions
 
 ### 🛡️ Security Improvements
-- **Vulnerability Resolution**: Replaced CKEditor with Quill.js to resolve npm security issues
+- **Vulnerability Resolution**: 
+  - Replaced CKEditor with Quill.js to resolve npm security issues
+  - Fixed Angular XSS vulnerabilities by upgrading to 21.0.3
+  - All security patches applied to backend and frontend
 - **Package Updates**: All dependencies updated to latest versions with security patches
 - **Authentication**: Updated to dj-rest-auth 7.0.1 with enhanced security features
 
 ### 🚀 Performance Enhancements
 - **Build Optimization**: Improved bundle sizes and lazy loading
 - **Modern JavaScript**: TypeScript 5.9.3 with latest language features
-- **Framework Benefits**: Angular 21 performance improvements and Django 5.2.8 optimizations
+- **Framework Benefits**: Angular 21.0.3 performance improvements and Django 5.2.8 optimizations
+
+### 🐛 Bug Fixes & Improvements
+- **Import Issues**: Fixed all Python import paths in test files and app configurations
+- **Component Architecture**: Resolved standalone component conflicts in Angular
+- **Database Setup**: Verified and documented proper database configuration
+- **Dependency Management**: Ensured all packages match requirements exactly
+
+### 📝 Code Quality Improvements
+- **Linting Configuration**: Added ESLint with Angular-specific rules
+- **TypeScript Configuration**: Optimized tsconfig.json for Angular 21
+- **Component Cleanup**: Removed unnecessary standalone declarations
+- **Build Optimization**: Cleaned up old build artifacts
 
 ## 🚀 Features
 
@@ -168,6 +192,49 @@ The API documentation is available via **Swagger**:
 
 - **Swagger UI:** `http://localhost:8000/api/swagger/`
 - **Redoc:** `http://localhost:8000/api/redoc/`
+
+## 📀 Database Setup
+
+### Default Configuration
+The application uses SQLite by default with the following configuration:
+
+```python
+# settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+```
+
+### Database Initialization
+1. **Automatic Setup**: Database is created automatically on first run
+2. **Migrations Applied**: All 45 migrations across 20+ apps
+3. **Sample Data**: Includes initial users, posts, groups, and tags
+
+### Admin Access
+- **Username**: `admin`
+- **Password**: `admin123`
+- **URL**: `/admin/`
+
+### Production Database (PostgreSQL)
+For production, configure PostgreSQL in `.env`:
+
+```bash
+# .env
+DATABASE_URL=postgres://username:password@localhost:5432/database_name
+```
+
+Then update `settings.py`:
+
+```python
+# settings.py
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+}
+```
 
 ## 📈 Management Commands
 

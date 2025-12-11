@@ -9,8 +9,9 @@ import { Post } from '@reddit/core/models/post.model';
 import { Group } from '@reddit/core/models/group.model';
 
 @Component({
-  standalone: false,
+  
   selector: 'app-group-feed',
+  standalone: false,
   templateUrl: './group-feed.component.html',
   styleUrls: ['./group-feed.component.scss']
 })

@@ -10,7 +10,7 @@ class AngularAppView(TemplateView):
     """
     Custom view to serve the Angular app with CSRF token cookie set.
     """
-    template_name = 'index.html'
+    template_name = 'templates/index.html'
     
     def get(self, request, *args, **kwargs):
         # Ensure CSRF token is set in cookies

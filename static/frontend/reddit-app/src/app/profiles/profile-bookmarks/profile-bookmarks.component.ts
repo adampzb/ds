@@ -5,8 +5,9 @@ import { User } from '@reddit/core/models/user.model';
 import { Group } from '@reddit/core/models/group.model';
 
 @Component({
-  standalone: false,
+  
   selector: 'app-profile-bookmarks',
+  standalone: false,
   templateUrl: './profile-bookmarks.component.html',
   styleUrls: ['./profile-bookmarks.component.scss']
 })
