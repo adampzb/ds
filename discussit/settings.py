@@ -79,6 +79,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'corsheaders',
+    'csp',
     'guardian',
 
     'django_filters',
@@ -117,11 +118,28 @@ REST_AUTH = {
 }
 
 # CSRF Configuration
-csrf_origins = get_env_variable('CSRF_TRUSTED_ORIGINS', 'http://localhost:8000,http://127.0.0.1:8000,')
+csrf_origins = get_env_variable('CSRF_TRUSTED_ORIGINS', 'http://localhost:8000,http://127.0.0.1:8000,http://51.15.115.36:8000,')
 CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in csrf_origins.split(',') if origin.strip()]
+
+# Content Security Policy Configuration (disabled for now due to compatibility issues)
+# CONTENT_SECURITY_POLICY = {
+#     'DIRECTIVES': {
+#         'default-src': ["'self'"]
+#         'script-src': ["'self'", "'unsafe-eval'", "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
+#         'style-src': ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
+#         'img-src': ["'self'", "data:", "https://fonts.gstatic.com"],
+#         'font-src': ["'self'", "https://fonts.gstatic.com"],
+#         'connect-src': ["'self'", "http://localhost:8000", "http://51.15.115.36:8000"],
+#         'object-src': ["'none'"]
+#         'base-uri': ["'self'"]
+#         'frame-ancestors': ["'none'"]
+#         'form-action': ["'self'"]
+#     }
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # 'csp.middleware.CSPMiddleware',  # Disabled due to configuration issues
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -360,6 +378,7 @@ else:
     # Also set specific origins for better security when possible
     cors_origins = get_env_variable('CORS_ALLOWED_ORIGINS', 
         'http://localhost:8000,http://127.0.0.1:8000,http://localhost:4200,http://127.0.0.1:4200,http://localhost:12001,http://127.0.0.1:12001,'
+        'http://51.15.115.36:8000,'
         'https://work-1-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev,'
         'https://work-2-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev')
     CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]
