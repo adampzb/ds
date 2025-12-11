@@ -26,7 +26,7 @@ from .views import AngularAppView
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Django Reddit API",
+        title="DiscussIt API",
         default_version="v1",
         description="API documentation for the reddit clone project",
     ),

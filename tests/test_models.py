@@ -1,5 +1,5 @@
 """
-Basic model tests for the Reddit clone application
+Basic model tests for the DiscussIt application
 """
 from django.test import TestCase
 from django.contrib.auth.models import User

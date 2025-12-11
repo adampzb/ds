@@ -1,4 +1,4 @@
-# Django Reddit Frontend - Angular 21
+# DiscussIt Frontend - Angular 21
 
 This Angular frontend was generated with [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1 and has been fully updated to the latest framework versions.
 

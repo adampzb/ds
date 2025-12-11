@@ -1,4 +1,4 @@
-# Django Reddit Clone
+# DiscussIt
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/Django-5.2.8-brightgreen?style=flat&logo=django&logoColor=white)](https://www.djangoproject.com/)
@@ -6,7 +6,7 @@
 [![Angular](https://img.shields.io/badge/Angular-21.0.1-blueviolet?style=flat&logo=angular&logoColor=white)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-A **modern full-stack Reddit clone** built with **Django REST Framework** backend and **Angular** frontend. This application provides a complete social media platform with user authentication, community features, and real-time interactions, now updated to the latest framework versions for enhanced security and performance.
+A **modern full-stack discussion platform** built with **Django REST Framework** backend and **Angular** frontend. This application provides a complete social media platform with user authentication, community features, and real-time interactions, now updated to the latest framework versions for enhanced security and performance.
 
 **🎉 Recently Fixed & Improved:**
 - ✅ Fixed all Python import issues in tests and apps
