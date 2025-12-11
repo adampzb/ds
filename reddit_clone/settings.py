@@ -211,7 +211,7 @@ LOGOUT_REDIRECT_URL = 'angular_app'
 ACCOUNT_LOGOUT_REDIRECT = 'angular_app'
 ACCOUNT_SESSION_REMEMBER = True
 # Updated allauth settings for django-allauth 65.x
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}  # Updated from ACCOUNT_AUTHENTICATION_METHOD
 ACCOUNT_SIGNUP_FIELDS = {
     'username': {'required': True},
     'email': {'required': True},
