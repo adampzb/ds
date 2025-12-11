@@ -84,7 +84,7 @@ INSTALLED_APPS = [
     'django_filters',
     'crispy_forms',
     'axes',
-    # 'django_ratelimit',  # Temporarily disabled due to cache issues
+    'django_ratelimit',
     'actstream',
     'drf_yasg',
     'apps.core',
@@ -166,10 +166,11 @@ if ENVIRONMENT == 'production':
         }
     }
 else:
-    # Development: Use dummy cache to avoid django_ratelimit issues
+    # Development: Use Redis cache for django_ratelimit compatibility
     CACHES = {
         'default': {
-            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': 'redis://127.0.0.1:6379',
         }
     }
 
@@ -234,6 +235,7 @@ LOGOUT_REDIRECT_URL = 'angular_app'
 ACCOUNT_LOGOUT_REDIRECT = 'angular_app'
 ACCOUNT_SESSION_REMEMBER = True
 # Updated allauth settings for django-allauth 65.x
+ACCOUNT_LOGIN_METHODS = ['username', 'email']  # Allow login with username or email
 ACCOUNT_SIGNUP_FIELDS = {
     'username': {'required': True},
     'email': {'required': True},
