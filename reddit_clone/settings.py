@@ -85,7 +85,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'axes',
     'django_ratelimit',
-    'activity_stream',
+    'actstream',
     'drf_yasg',
     'apps.core',
     'apps.tags',
@@ -128,6 +128,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'axes.middleware.AxesMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -154,6 +155,24 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'reddit_clone.wsgi.application'
+
+# Cache configuration for django-ratelimit and django-axes
+# Use Redis in production, LocMemCache in development
+if ENVIRONMENT == 'production':
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': 'redis://127.0.0.1:6379',
+        }
+    }
+else:
+    # Development: Use locmem cache (not shared, but works for development)
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'LOCATION': 'unique-snowflake',
+        }
+    }
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -191,6 +210,7 @@ else:
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    'axes.backends.AxesBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
     'guardian.backends.ObjectPermissionBackend',
 )
@@ -215,7 +235,6 @@ LOGOUT_REDIRECT_URL = 'angular_app'
 ACCOUNT_LOGOUT_REDIRECT = 'angular_app'
 ACCOUNT_SESSION_REMEMBER = True
 # Updated allauth settings for django-allauth 65.x
-ACCOUNT_LOGIN_METHODS = {'username', 'email'}  # Updated from ACCOUNT_AUTHENTICATION_METHOD
 ACCOUNT_SIGNUP_FIELDS = {
     'username': {'required': True},
     'email': {'required': True},
