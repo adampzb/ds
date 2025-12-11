@@ -8,12 +8,12 @@ export const environment = {
   serverUrl: 'http://localhost:8000',
   
   // Dynamic app URL detection for production - FORCE LOCAL DEVELOPMENT
-  appUrl: 'http://localhost:8000/django_reddit',
+  appUrl: 'http://localhost:8000/',
   
   // Dynamic login URL
   get loginUrl() {
     return `${this.appUrl}/sign-in`;
   },
   
-  staticUrl: '/django_reddit/assets/images/'
+  staticUrl: '/assets/images/'
 };

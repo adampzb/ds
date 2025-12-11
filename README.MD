@@ -161,7 +161,7 @@ If you encounter engine compatibility warnings:
 📖 **For detailed compatibility information, see [NODEJS_ANGULAR_COMPATIBILITY.md](NODEJS_ANGULAR_COMPATIBILITY.md)**
 
 ### 3. Access the Application
-- **Frontend**: http://localhost:4200/django_reddit
+- **Frontend**: http://localhost:4200/
 - **Backend API**: http://localhost:8000/api/v1/
 - **Admin Panel**: http://localhost:8000/admin/
 

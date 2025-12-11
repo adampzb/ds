@@ -42,11 +42,11 @@ export const environment = {
     
     // Runtime environment - use current hostname for frontend
     if (hostname.includes('prod-runtime.all-hands.dev')) {
-      return `https://${hostname}/django_reddit`;
+      return `https://${hostname}/`;
     }
     
     // Fallback
-    return 'https://work-2-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev/django_reddit';
+    return 'https://work-2-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev/';
   })(),
   
   // Dynamic login URL

@@ -84,7 +84,7 @@ src/
 
 ```bash
 # Build with proper base href
-ng build --base-href /django_reddit/
+ng build --base-href /
 
 # Output goes to dist/ directory
 # Copy contents to Django static directory

@@ -31,18 +31,18 @@ export const environment = {
   appUrl: (() => {
     if (typeof window === 'undefined') {
       // Server-side rendering fallback
-      return 'https://work-2-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev/django_reddit';
+      return 'https://work-2-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev/';
     }
     
     const hostname = window.location.hostname;
     
     // Runtime environment - use current hostname for frontend
     if (hostname.includes('prod-runtime.all-hands.dev')) {
-      return `https://${hostname}/django_reddit`;
+      return `https://${hostname}/`;
     }
     
     // Fallback
-    return 'https://work-2-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev/django_reddit';
+    return 'https://work-2-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev/';
   })(),
   
   // Dynamic login URL
@@ -50,5 +50,5 @@ export const environment = {
     return `${this.appUrl}/sign-in`;
   },
   
-  staticUrl: '/django_reddit/assets/images/'
+  staticUrl: '/assets/images/'
 };

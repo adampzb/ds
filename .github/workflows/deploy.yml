@@ -37,7 +37,7 @@
 #       - name: Build Angular app
 #         run: |
 #           cd ./static/frontend/reddit-app
-#           npx ng build --configuration production --base-href "/django_reddit/"
+#           npx ng build --configuration production --base-href "/"
 
 #       - name: Deploy to GitHub Pages
 #         uses: JamesIves/github-pages-deploy-action@v4
