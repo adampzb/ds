@@ -4,15 +4,15 @@ export const environment = {
   production: false,
   baseUrl: '/api/v1/',
   
-  // Dynamic server URL detection
+  // Dynamic server URL detection - Updated for Django backend
   serverUrl: (() => {
-    if (typeof window === 'undefined') return 'http://localhost:12000';
+    if (typeof window === 'undefined') return 'http://localhost:8000';
     
     const hostname = window.location.hostname;
     
-    // Local development
+    // Local development - point to Django backend
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
-      return 'http://localhost:12000';
+      return 'http://localhost:8000';
     }
     
     // Runtime environment detection
