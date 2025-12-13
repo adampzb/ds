@@ -1,0 +1,139 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly security scan on Sundays
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10.12"
+    
+    - name: Install security tools
+      run: |
+        pip install bandit safety django-audit
+    
+    - name: Run Bandit (Python security scanner)
+      run: bandit -r . -x .venv,static,node_modules --format json -o bandit-results.json
+    
+    - name: Run Safety (dependency checker)
+      run: safety check --json > safety-results.json
+    
+    - name: Run Django Audit
+      run: django-audit check --json > django-audit-results.json
+    
+    - name: Upload security reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: security-reports
+        path: |
+          bandit-results.json
+          safety-results.json
+          django-audit-results.json
+    
+    - name: Comment on PR with security results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          // Read bandit results
+          const bandit = JSON.parse(fs.readFileSync('bandit-results.json'));
+          
+          // Read safety results
+          const safety = JSON.parse(fs.readFileSync('safety-results.json'));
+          
+          // Create comment
+          let comment = '## 🔒 Security Scan Results\n\n';
+          
+          // Bandit results
+          comment += `### Bandit (Code Security)\n`;
+          comment += `- Issues found: ${bandit.results.length}\n`;
+          comment += `- Severity: ${bandit.metrics._totals.severity}\n`;
+          
+          if (bandit.results.length > 0) {
+            comment += '\n**Issues:**\n';
+            bandit.results.slice(0, 5).forEach(issue => {
+              comment += `- \[${issue.severity}\] ${issue.test_name} in ${issue.filename}\n`;
+            });
+            if (bandit.results.length > 5) {
+              comment += `- ... and ${bandit.results.length - 5} more\n`;
+            }
+          }
+          
+          // Safety results
+          comment += `\n### Safety (Dependencies)\n`;
+          comment += `- Vulnerabilities: ${safety.length}\n`;
+          
+          if (safety.length > 0) {
+            comment += '\n**Vulnerable packages:**\n';
+            safety.slice(0, 5).forEach(vuln => {
+              comment += `- ${vuln.package_name} (${vuln.vulnerable_version}) - ${vuln.advisory}\n`;
+            });
+            if (safety.length > 5) {
+              comment += `- ... and ${safety.length - 5} more\n`;
+            }
+          }
+          
+          // Post comment
+          await github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+
+  codeql-analysis:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: python, javascript
+    
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+      with:
+        category: "/language:python"
+
+  trivy-scan:
+    name: Trivy Container Scan
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'table'
+        exit-code: '1'
+        ignore-unfixed: true
+        severity: 'CRITICAL,HIGH'

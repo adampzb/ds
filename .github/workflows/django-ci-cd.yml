@@ -1,0 +1,161 @@
+name: Django CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "develop", "feature/*" ]
+    paths:
+      - 'apps/**'
+      - 'discussit/**'
+      - 'requirements.txt'
+      - 'manage.py'
+      - '.github/workflows/django-ci-cd.yml'
+  pull_request:
+    branches: [ "main", "develop" ]
+    paths:
+      - 'apps/**'
+      - 'discussit/**'
+      - 'requirements.txt'
+      - 'manage.py'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Django Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10.12"]
+        django-version: ["5.2.8"]
+    
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_discussit
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+        cache-dependency-path: 'requirements.txt'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-django
+    
+    - name: Run Django tests
+      env:
+        DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_discussit
+        SECRET_KEY: test-secret-key-for-ci
+        DEBUG: False
+      run: |
+        python manage.py test --verbosity=2
+    
+    - name: Run linting
+      run: |
+        pip install flake8 black
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        black --check . --diff
+    
+    - name: Run security checks
+      run: |
+        pip install bandit safety
+        bandit -r . -x .venv,static
+        safety check
+
+  build:
+    name: Build Docker Image
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile.prod
+        push: true
+        tags: ghcr.io/${{ github.repository }}/discussit:latest,ghcr.io/${{ github.repository }}/discussit:${{ github.sha }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+  deploy-staging:
+    name: Deploy to Staging
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Deploy to staging server
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.STAGING_SSH_HOST }}
+        username: ${{ secrets.STAGING_SSH_USER }}
+        key: ${{ secrets.STAGING_SSH_KEY }}
+        script: |
+          cd /opt/discussit
+          git pull origin develop
+          docker-compose -f docker-compose.prod.yml down
+          docker-compose -f docker-compose.prod.yml pull
+          docker-compose -f docker-compose.prod.yml up -d
+          docker system prune -f
+
+  deploy-production:
+    name: Deploy to Production
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Deploy to production server
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.PROD_SSH_HOST }}
+        username: ${{ secrets.PROD_SSH_USER }}
+        key: ${{ secrets.PROD_SSH_KEY }}
+        script: |
+          cd /opt/discussit
+          git pull origin main
+          docker-compose -f docker-compose.prod.yml down
+          docker-compose -f docker-compose.prod.yml pull
+          docker-compose -f docker-compose.prod.yml up -d
+          docker system prune -f
