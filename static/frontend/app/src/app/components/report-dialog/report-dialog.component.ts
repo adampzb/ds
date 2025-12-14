@@ -1,11 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
-import { ReportService } from '@reddit/core/services/report/report.service';
+import { ReportService } from '@discussit/core/services/report/report.service';
 
 @Component({
-  standalone: false,
   selector: 'app-report-dialog',
+  standalone: false,
   templateUrl: './report-dialog.component.html',
   styleUrls: ['./report-dialog.component.scss']
 })

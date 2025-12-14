@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Post } from '@reddit/core/models/post.model';
-import { PostService } from '@reddit/core/services/post/post.service';
-import { environment } from '@reddit/env/environment';
+import { Post } from '@discussit/core/models/post.model';
+import { PostService } from '@discussit/core/services/post/post.service';
+import { environment } from '@discussit/env/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { ReportDialogComponent } from '@reddit/app/components/report-dialog/report-dialog.component';
+import { ReportDialogComponent } from '@discussit/app/components/report-dialog/report-dialog.component';
 
 @Component({
-  standalone: false,
   selector: 'app-post',
+  standalone: false,
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })

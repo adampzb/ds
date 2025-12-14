@@ -2,21 +2,21 @@
   <div class="login-form">
     <h2 class="text-white" align="center">Sign up for DiscussIt</h2>
 
-    <form class="width-100" [formGroup]="registerForm" class="auth-form" autocomplete="off">
+    <form class="width-100 auth-form" [formGroup]="registerForm" autocomplete="off">
       <div class="width-100 margin-bottom-4">
         <label for="username">Username</label>
-        <input matInput id="username" placeholder="johndoe" formControlName="username" type="text" class="form-input">
+        <input id="username" placeholder="johndoe" formControlName="username" type="text" class="form-input">
       </div>
 
       <div class="width-100 margin-bottom-4">
         <label for="email">Email</label>
-        <input matInput id="email" placeholder="jane@email.com" formControlName="email" type="email" class="form-input">
+        <input id="email" placeholder="jane@email.com" formControlName="email" type="email" class="form-input">
       </div>
 
       <div class="input-column margin-bottom-4" style="display: flex; gap: 16px; position: relative">
         <div class="width-100">
           <label for="password1">Password</label>
-          <input matInput id="password1" placeholder="dankworld12" formControlName="password1" [type]="hidePassword ? 'password' : 'text'" class="form-input">
+          <input id="password1" placeholder="dankworld12" formControlName="password1" [type]="hidePassword ? 'password' : 'text'" class="form-input">
           <button mat-icon-button matSuffix class="toggle-visibility-btn" (click)="toggleVisibility()" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
             <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
@@ -24,7 +24,7 @@
 
         <div class="width-100">
           <label for="password2">Confirm password</label>
-          <input matInput id="password2" placeholder="dankworld12" formControlName="password2" [type]="hidePassword ? 'password' : 'text'" class="form-input">
+          <input id="password2" placeholder="dankworld12" formControlName="password2" [type]="hidePassword ? 'password' : 'text'" class="form-input">
           <button mat-icon-button matSuffix class="toggle-visibility-btn" (click)="toggleVisibility()" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
             <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>

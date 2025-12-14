@@ -232,7 +232,7 @@ static/frontend/
 │   │   │   │   ├── profile-posts/
 │   │   │   │   ├── profile-upvotes/
 │   │   │   │   └── profiles/
-│   │   │   └── setttings/
+│   │   │   └── settings/
 │   │   ├── assets/
 │   │   ├── environments/
 │   │   └── styles/

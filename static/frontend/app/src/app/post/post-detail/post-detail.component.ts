@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '@reddit/core/services/user/user.service';
-import { PostService } from '@reddit/core/services/post/post.service';
-import { Post } from '@reddit/core/models/post.model';
-import { User } from '@reddit/core/models/user.model';
+import { UserService } from '@discussit/core/services/user/user.service';
+import { PostService } from '@discussit/core/services/post/post.service';
+import { Post } from '@discussit/core/models/post.model';
+import { User } from '@discussit/core/models/user.model';
 
 
 @Component({
-  standalone: false,
   selector: 'app-post-detail',
+  standalone: false,
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.scss']
 })

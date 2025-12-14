@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  standalone: false,
+  
   selector: 'app-profile-comments',
+  standalone: false,
   templateUrl: './profile-comments.component.html',
   styleUrls: ['./profile-comments.component.scss']
 })

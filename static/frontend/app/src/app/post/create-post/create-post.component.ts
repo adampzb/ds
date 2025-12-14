@@ -7,16 +7,16 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { MatDialog } from '@angular/material/dialog';
 import { HttpEventType } from '@angular/common/http';
 // import FroalaEditor from 'froala-editor';
-import { PostService } from '@reddit/core/services/post/post.service';
-import { UserService } from '@reddit/core/services/user/user.service';
-import { GroupService } from '@reddit/core/services/group/group.service';
-import { User } from '@reddit/core/models/user.model';
-import { Group } from '@reddit/core/models/group.model';
+import { PostService } from '@discussit/core/services/post/post.service';
+import { UserService } from '@discussit/core/services/user/user.service';
+import { GroupService } from '@discussit/core/services/group/group.service';
+import { User } from '@discussit/core/models/user.model';
+import { Group } from '@discussit/core/models/group.model';
 
 
 @Component({
-  standalone: false,
   selector: 'app-create-post',
+  standalone: false,
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.scss']
 })

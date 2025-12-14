@@ -1,13 +1,13 @@
 import { AfterViewInit, Component, OnInit, } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '@reddit/core/services/user/user.service';
+import { UserService } from '@discussit/core/services/user/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
-  standalone: false,
   selector: 'app-sign-in',
+  standalone: false,
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
@@ -24,8 +24,8 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl('', {
-        validators: [Validators.required, Validators.email]
+      username: new FormControl('', {
+        validators: [Validators.required]
       }),
       password: new FormControl('', { validators: [Validators.required] })
     });
@@ -50,7 +50,7 @@ export class SignInComponent implements OnInit {
     }
 
     const loginData = {
-      email: this.loginForm.value.email,
+      username: this.loginForm.value.username,
       password: this.loginForm.value.password
     };
     

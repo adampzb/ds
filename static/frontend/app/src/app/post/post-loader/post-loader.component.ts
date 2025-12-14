@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  standalone: false,
   selector: 'app-post-loader',
+  standalone: false,
   templateUrl: './post-loader.component.html',
   styleUrls: ['./post-loader.component.scss']
 })

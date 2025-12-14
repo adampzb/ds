@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Comment } from '@reddit/core/models/comment.model';
-import { User } from '@reddit/core/models/user.model';
+import { Comment } from '@discussit/core/models/comment.model';
+import { User } from '@discussit/core/models/user.model';
 
 
 @Component({
-  standalone: false,
+  
   selector: 'app-comment-list',
+  standalone: false,
   templateUrl: './comment-list.component.html',
   styleUrls: ['./comment-list.component.scss']
 })

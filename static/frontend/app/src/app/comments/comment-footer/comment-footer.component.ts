@@ -1,12 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CommentService } from '@reddit/core/services/comment/comment.service';
-import { User } from '@reddit/core/models/user.model';
-import { Comment } from '@reddit/core/models/comment.model';
+import { CommentService } from '@discussit/core/services/comment/comment.service';
+import { User } from '@discussit/core/models/user.model';
+import { Comment } from '@discussit/core/models/comment.model';
 
 
 @Component({
-  standalone: false,
+  
   selector: 'app-comment-footer',
+  standalone: false,
   templateUrl: './comment-footer.component.html',
   styleUrls: ['./comment-footer.component.scss']
 })
