@@ -19,7 +19,7 @@ import { CreateGroupComponent } from './group/create-group/create-group.componen
   standalone: false
 })
 export class AppComponent implements OnInit, AfterContentChecked {
-  title = 'reddit';
+  title = 'discussit';
   path: string;
   authRoute: boolean = false;
   user: User;

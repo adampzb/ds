@@ -60,18 +60,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "reddit-app:build"
+            "buildTarget": "discussit-app:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "reddit-app:build:production"
+              "buildTarget": "discussit-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "reddit-app:build"
+            "buildTarget": "discussit-app:build"
           }
         },
         "test": {

@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'reddit-app'`, () => {
+  it(`should have as title 'discussit-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('reddit-app');
+    expect(app.title).toEqual('discussit-app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('reddit-app app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('discussit-app app is running!');
   });
 });
