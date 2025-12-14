@@ -79,13 +79,14 @@ def worker_exit(server, worker):
     server.log.info("Worker exited (pid: %s)", worker.pid)
 
 # Configuration for different environments
-env = os.environ.get("ENVIRONMENT", "production")
+env = os.environ.get("ENVIRONMENT", "development")
 
 if env == "development":
     workers = 2
     worker_class = "sync"
     loglevel = "debug"
     reload = True
+    bind = "0.0.0.0:8000"
 elif env == "staging":
     workers = multiprocessing.cpu_count() + 1
     worker_class = "gevent"
