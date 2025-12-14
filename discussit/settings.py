@@ -37,6 +37,15 @@ SECRET_KEY = get_env_variable('SECRET_KEY', 'django-insecure-development-key-cha
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_env_variable('DEBUG', 'True').lower() in ('true', '1', 'yes', 'on')
 
+# Security check for production
+if not DEBUG and SECRET_KEY.startswith('django-insecure-'):
+    import warnings
+    warnings.warn(
+        "⚠️  SECURITY WARNING: You are using an insecure SECRET_KEY in production! "
+        "Set a secure SECRET_KEY via environment variable.",
+        RuntimeWarning
+    )
+
 # Environment-based configuration
 ENVIRONMENT = get_env_variable('ENVIRONMENT', 'development')
 
@@ -292,6 +301,8 @@ LOGOUT_REDIRECT_URL = 'angular_app'
 ACCOUNT_LOGOUT_REDIRECT = 'angular_app'
 ACCOUNT_SESSION_REMEMBER = True
 # Updated allauth settings for django-allauth 65.x
+# Fix for ACCOUNT_LOGIN_METHODS conflicts with ACCOUNT_SIGNUP_FIELDS warning
+# Allow both username and email for login, but require both in signup
 ACCOUNT_LOGIN_METHODS = ['username', 'email']  # Allow login with username or email
 ACCOUNT_SIGNUP_FIELDS = {
     'username': {'required': True},
@@ -589,15 +600,15 @@ PERFORMANCE_MONITORING = {
 
 # Security headers for production
 if not DEBUG:
-    # Security middleware settings
+    # Security middleware settings for production
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
-    # SECURE_HSTS_SECONDS = 31536000  # 1 year
-    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    # SECURE_HSTS_PRELOAD = True
-    SECURE_SSL_REDIRECT = False  # Disable for testing without HTTPS
-    # SESSION_COOKIE_SECURE = True
-    # CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year - uncommented for production security
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True  # Enable HTTPS redirect in production
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_HTTPONLY = True
     CSRF_COOKIE_HTTPONLY = True
     X_FRAME_OPTIONS = 'DENY'
