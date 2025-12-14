@@ -51,7 +51,7 @@ def when_ready(server):
 
 # Environment
 raw_env = [
-    "DJANGO_SETTINGS_MODULE=discussit.settings_production",
+    "DJANGO_SETTINGS_MODULE=discussit.settings",
 ]
 
 # Performance
