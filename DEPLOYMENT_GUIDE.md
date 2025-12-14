@@ -2,27 +2,86 @@
 
 This guide provides step-by-step instructions for deploying DiscussIt on a remote server and accessing it from another device.
 
+## Server Specifications
+
+### Our Current Server Configuration
+
+This deployment guide is tailored for our specific server configuration:
+
+**Basic Information:**
+- **Hostname**: OH
+- **IP Address**: 51.15.115.36
+- **Operating System**: Ubuntu 24.04.3 LTS (Noble Numbat)
+- **Kernel**: Linux 6.8.0-90-generic
+- **Architecture**: x86_64
+
+**Hardware Resources:**
+- **CPU**: 4 cores (Intel/AMD x86_64)
+- **RAM**: 7.7GB total (7.2GB available)
+- **Storage**: 27GB SSD (/dev/vda1 with 17GB available)
+- **Swap**: None configured
+
+**Network Configuration:**
+- **Primary Interface**: ens2 (de:00:00:60:cd:c5)
+- **IPv4 Address**: 51.15.115.36/32
+- **IPv6 Address**: 2001:bc8:1640:5b61:dc00:ff:fe60:cdc5/64
+- **Docker Network**: 172.17.0.1/16 (docker0 interface)
+
+**Software Versions:**
+- **Python**: 3.12.3
+- **Docker**: 28.2.2
+- **Docker Compose**: 1.29.2
+- **Nginx**: 1.24.0
+- **Git**: Latest stable version
+- **Pip**: 24.0
+
+**Filesystem Layout:**
+- **Root**: 27GB ext4 filesystem on /dev/vda1
+- **Boot**: 881MB ext4 on /dev/vda16
+- **EFI**: 105MB vfat on /dev/vda15
+
+**Project Location:**
+- **Base Directory**: /root/7/
+- **Static Files**: /root/7/static/
+- **Media Files**: /root/7/media/
+- **Templates**: /root/7/templates/
+
+This configuration represents our exact production environment, ensuring that the deployment instructions are perfectly tailored to our server setup.
+
 ## Table of Contents
 
-1. [Prerequisites](#prerequisites)
-2. [Server Setup](#server-setup)
-3. [Deployment Methods](#deployment-methods)
+1. [Server Specifications](#server-specifications)
+2. [Prerequisites](#prerequisites)
+3. [Server Setup](#server-setup)
+4. [Deployment Methods](#deployment-methods)
    - [Method 1: Docker Deployment (Recommended)](#method-1-docker-deployment-recommended)
    - [Method 2: Manual Deployment](#method-2-manual-deployment)
-4. [Domain and Network Configuration](#domain-and-network-configuration)
-5. [Accessing from Another Device](#accessing-from-another-device)
-6. [Testing Functionality](#testing-functionality)
-7. [Troubleshooting](#troubleshooting)
-8. [Security Best Practices](#security-best-practices)
+5. [Domain and Network Configuration](#domain-and-network-configuration)
+6. [Accessing from Another Device](#accessing-from-another-device)
+7. [Testing Functionality](#testing-functionality)
+8. [Troubleshooting](#troubleshooting)
+9. [Security Best Practices](#security-best-practices)
 
 ## Prerequisites
 
 ### Remote Server Requirements
-- **Operating System**: Ubuntu 22.04 LTS or later (recommended)
-- **CPU**: 2+ cores
-- **RAM**: 4GB+ (8GB recommended for production)
-- **Storage**: 20GB+ SSD
-- **Network**: Public IP address with ports 80, 443, and 8000 accessible
+- **Operating System**: Ubuntu 24.04.3 LTS (Noble Numbat) - This is the exact OS used in our deployment
+- **Kernel**: Linux 6.8.0-90-generic (x86_64)
+- **CPU**: 4 cores (Intel/AMD x86_64 architecture)
+- **RAM**: 8GB (7.7GB total, 7.2GB available)
+- **Storage**: 27GB SSD (/dev/vda1 with 17GB available)
+- **Network**: Public IP address 51.15.115.36 with ports 80, 443, and 8000 accessible
+- **Hostname**: OH (as configured in /etc/hostname)
+
+### Current Server Configuration (Reference)
+This guide is based on the exact server configuration we're currently using:
+- **Server IP**: 51.15.115.36
+- **Server Name**: OH
+- **Ubuntu Version**: 24.04.3 LTS
+- **Python Version**: 3.12.3
+- **Docker Version**: 28.2.2
+- **Docker Compose Version**: 1.29.2
+- **Nginx Version**: 1.24.0
 
 ### Local Machine Requirements
 - SSH client
@@ -39,10 +98,15 @@ This guide provides step-by-step instructions for deploying DiscussIt on a remot
 ### 1. Connect to Your Remote Server
 
 ```bash
-ssh root@your_server_ip
+ssh root@51.15.115.36
 ```
 
-Replace `your_server_ip` with your actual server IP address.
+For our specific server, use:
+```bash
+ssh root@51.15.115.36
+```
+
+Replace `root` with your actual username if different. The server hostname is `OH`.
 
 ### 2. Update System Packages
 
@@ -93,15 +157,21 @@ Edit the `.env` file with your specific configuration:
 nano .env
 ```
 
-Update these key variables:
+Update these key variables (with our server-specific values):
 ```
-ALLOWED_HOSTS=your_domain.com,your_server_ip,localhost
-SECRET_KEY=your-very-secure-secret-key-here
+ALLOWED_HOSTS=51.15.115.36,localhost,OH
+SECRET_KEY=your-very-secure-secret-key-here-change-this-immediately
 DEBUG=False
-DATABASE_URL=postgres://db_user:db_password@db:5432/db_name
-CORS_ALLOWED_ORIGINS=https://your_domain.com,http://your_server_ip:8000
-CSRF_TRUSTED_ORIGINS=https://your_domain.com,http://your_server_ip
+DATABASE_URL=postgres://discussit_user:secure_password@db:5432/discussit
+CORS_ALLOWED_ORIGINS=http://51.15.115.36:8000,http://localhost:4200
+CSRF_TRUSTED_ORIGINS=http://51.15.115.36
 ```
+
+For our specific server configuration:
+- **Server IP**: 51.15.115.36
+- **Server Hostname**: OH
+- **Database**: PostgreSQL (will be containerized with Docker)
+- **Frontend**: Angular on port 4200 (for development)
 
 #### Step 3: Build and Start Containers
 
@@ -242,11 +312,11 @@ sudo systemctl enable discussit
 sudo nano /etc/nginx/sites-available/discussit
 ```
 
-Add this configuration:
+Add this configuration (for our specific server):
 ```nginx
 server {
     listen 80;
-    server_name your_domain.com your_server_ip;
+    server_name 51.15.115.36 OH;
 
     location / {
         proxy_pass http://localhost:8000;
@@ -257,14 +327,21 @@ server {
     }
 
     location /static/ {
-        alias /path/to/discussit/static/;
+        alias /root/7/static/;
     }
 
     location /media/ {
-        alias /path/to/discussit/media/;
+        alias /root/7/media/;
     }
 }
 ```
+
+For our server:
+- **Server IP**: 51.15.115.36
+- **Server Name**: OH
+- **Project Path**: /root/7/
+- **Static Files**: /root/7/static/
+- **Media Files**: /root/7/media/
 
 Enable the configuration:
 ```bash
@@ -286,8 +363,13 @@ Follow the prompts to complete SSL setup.
 ### Method 1: Using Server IP Address
 
 1. On another device, open a web browser
-2. Enter: `http://your_server_ip:8000` (or `https://your_domain.com` if using domain)
+2. Enter: `http://51.15.115.36:8000` (or `https://your_domain.com` if using domain)
 3. You should see the DiscussIt application
+
+For our specific server:
+- **Direct Access**: `http://51.15.115.36:8000`
+- **Server Name Access**: `http://OH:8000` (if DNS is configured)
+- **Local Network**: If on the same network, you can also use the local IP
 
 ### Method 2: Using Domain Name (Recommended)
 

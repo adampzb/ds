@@ -1,10 +1,27 @@
 # DiscussIt Quick Start Deployment Guide
 
+## 📋 Server Specifications
+
+**Our Server (OH):**
+- **IP**: 51.15.115.36
+- **OS**: Ubuntu 24.04.3 LTS
+- **CPU**: 4 cores
+- **RAM**: 8GB
+- **Storage**: 27GB SSD
+- **Python**: 3.12.3
+- **Docker**: 28.2.2
+- **Project Path**: /root/7/
+
 ## 🚀 Fast Deployment (Docker Method)
 
 ### 1. Connect to Server
 ```bash
-ssh root@your_server_ip
+ssh root@51.15.115.36
+```
+
+For our specific server (OH):
+```bash
+ssh root@51.15.115.36
 ```
 
 ### 2. Install Dependencies
@@ -15,10 +32,18 @@ sudo apt install -y git docker.io docker-compose nginx certbot python3-certbot-n
 
 ### 3. Clone and Deploy
 ```bash
-git clone https://github.com/your-repo/discussit.git
-cd discussit
+git clone https://github.com/adampzb/7.git
+cd 7
 cp .env.example .env
 nano .env  # Update SECRET_KEY, ALLOWED_HOSTS, DATABASE_URL
+```
+
+For our server, update .env with:
+```
+ALLOWED_HOSTS=51.15.115.36,localhost,OH
+SECRET_KEY=your-secure-secret-key-here
+DEBUG=False
+DATABASE_URL=postgres://discussit_user:secure_password@db:5432/discussit
 ```
 
 ### 4. Start Application
@@ -35,11 +60,11 @@ sudo docker-compose exec web python manage.py collectstatic --noinput
 sudo nano /etc/nginx/sites-available/discussit
 ```
 
-Add this configuration:
+Add this configuration (for our server):
 ```nginx
 server {
     listen 80;
-    server_name your_domain.com your_server_ip;
+    server_name 51.15.115.36 OH;
 
     location / {
         proxy_pass http://localhost:8000;
@@ -50,7 +75,7 @@ server {
     }
 
     location /static/ {
-        alias /path/to/discussit/static/;
+        alias /root/7/static/;
     }
 }
 ```
@@ -68,9 +93,14 @@ sudo certbot --nginx -d your_domain.com
 
 ## ✅ Access Your Application
 
-- **Direct IP**: `http://your_server_ip:8000`
-- **With Domain**: `https://your_domain.com`
-- **Admin Panel**: `https://your_domain.com/admin`
+- **Direct IP**: `http://51.15.115.36:8000`
+- **Server Name**: `http://OH:8000`
+- **Admin Panel**: `http://51.15.115.36:8000/admin`
+
+For our specific server (OH at 51.15.115.36):
+- **Application**: `http://51.15.115.36:8000`
+- **Admin**: `http://51.15.115.36:8000/admin`
+- **API**: `http://51.15.115.36:8000/api/`
 
 ## 🔧 Common Commands
 
