@@ -15,19 +15,6 @@ export const environment = {
       return 'http://localhost:8000';
     }
     
-    // Runtime environment detection
-    if (hostname.includes('prod-runtime.all-hands.dev')) {
-      // Extract the work instance identifier and use work-1 for backend
-      const match = hostname.match(/work-(\d+)-([^.]+)\.prod-runtime\.all-hands\.dev/);
-      if (match) {
-        const [, , instanceId] = match;
-        return `https://work-1-${instanceId}.prod-runtime.all-hands.dev`;
-      }
-    }
-    
-    // Fallback to current runtime URLs
-    return 'https://work-1-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev';
-  })(),
   
   // Dynamic app URL detection
   appUrl: (() => {
@@ -45,9 +32,6 @@ export const environment = {
       return `https://${hostname}/`;
     }
     
-    // Fallback
-    return 'https://work-2-pumwxxszeoqwqlkx.prod-runtime.all-hands.dev/';
-  })(),
   
   // Dynamic login URL
   get loginUrl() {
