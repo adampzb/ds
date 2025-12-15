@@ -583,20 +583,29 @@ PERFORMANCE_MONITORING = {
 # PRODUCTION READINESS CONFIGURATION
 # ============================================================================
 
-# Security headers for production
+# Security headers configuration
+# For development with remote access, we need to be less strict
 if not DEBUG:
-    # Security middleware settings for production
+    # Production security settings
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_HSTS_SECONDS = 31536000  # 1 year - uncommented for production security
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
-    SECURE_SSL_REDIRECT = True  # Enable HTTPS redirect in production
+    SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_HTTPONLY = True
     CSRF_COOKIE_HTTPONLY = True
     X_FRAME_OPTIONS = 'DENY'
+else:
+    # Development settings - allow remote testing over HTTP
+    # Disable strict security headers that require HTTPS
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    # Allow framing for development tools
+    X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Create logs directory if it doesn't exist
 import os
